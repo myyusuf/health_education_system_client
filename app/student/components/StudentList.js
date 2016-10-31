@@ -3,6 +3,7 @@ import Button from '../../base/components/Button';
 import ToggleButton from '../../base/components/ToggleButton';
 import TextBox from '../../base/components/TextBox';
 import DataGrid from '../../base/components/DataGrid';
+import LevelComboBox from "../../student/components/LevelComboBox";
 import AddStudentWindow from '../../student/components/AddStudentWindow';
 import EditStudentWindow from '../../student/components/EditStudentWindow';
 
@@ -33,6 +34,7 @@ export default class StudentList {
 
     var onSearch = function(data) {
           data['searchTxt'] = searchTextBox.getValue();
+          data['level'] = levelComboBox.getValue();
           return data;
     }
 
@@ -72,6 +74,7 @@ export default class StudentList {
     });
 
     var searchTextBox = new TextBox({placeHolder: 'Stambuk atau Nama', width: 250, height: 24});
+    var levelComboBox = new LevelComboBox({});
     var searchButton = new Button({
       imgSrc:'/ceu_assets/images/search.png',
       theme: 'metro',
@@ -116,8 +119,12 @@ export default class StudentList {
     innerTd.appendTo(innerTr);
     searchTextBox.render(innerTd);
 
+    innerTd = $('<td style="padding-top: 6px; width: 100px; height: 100%;"></td>');
+    innerTd.appendTo(innerTr);
+    levelComboBox.render(innerTd);
+
     innerTd = $('<td style="padding-top: 6px; height: 100%; "></td>');
-    var _tempContainer = $('<div style="margin-left: -5px;"></div>')
+    var _tempContainer = $('<div style="margin-left: 2px;"></div>')
     _tempContainer.appendTo(innerTd);
     innerTd.appendTo(innerTr);
     searchButton.render(_tempContainer);
