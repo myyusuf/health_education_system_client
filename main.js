@@ -7,6 +7,7 @@ import Tabs from "./app/base/components/Tabs";
 import Button from "./app/base/components/Button";
 import ScheduleView from "./app/schedule/components/ScheduleView";
 import ScoreList from "./app/score/components/ScoreList";
+import WeeklyScheduleList from "./app/schedule/components/WeeklyScheduleList";
 import StudentList from "./app/student/components/StudentList";
 import HospitalList from "./app/hospital/components/HospitalList";
 import HospitalScheduleView from "./app/hospital/components/HospitalScheduleView";
@@ -25,6 +26,9 @@ var data = [
         id: 'jadwal_umum',
         label: "Jadwal Umum",
         selected: true
+      }, {
+        id: 'jadwal_mingguan',
+        label: "Jadwal Rotasi Mingguan"
       }, {
         id: 'jadwal_rs',
         label: "Jadwal Rumah Sakit",
@@ -76,6 +80,8 @@ var tree = new Tree({
    if(!tabs.selectTabByTitle(item.label)){
      if(item.id == 'jadwal_umum'){
          tabs.add(item.id, item.label, scheduleView);
+     }else if(item.id == 'jadwal_mingguan'){
+         tabs.add(item.id, item.label, weeklyScheduleList);
      }else if(item.id == 'data_nilai'){
          tabs.add(item.id, item.label, scoreList);
      }else if(item.id == 'data_siswa'){
@@ -98,6 +104,7 @@ var tree = new Tree({
 // menu.render($('#top-menu'));
 
 var scoreList = new ScoreList();
+var weeklyScheduleList = new WeeklyScheduleList();
 var studentList = new StudentList();
 var hospitalList = new HospitalList();
 var costUnitReport = new CostUnitReport();
