@@ -13,12 +13,13 @@ export default class ClinicComboBox {
       width: '100%',
       height: 25,
       theme: 'metro',
-      selectionMode: 'dropDownList'
+      // selectionMode: 'dropDownList'
     };
 
     this.comboBox = new ComboBox({
       url: '/hospitals/clinics_all',
       value: options.value,
+      clearSelectionEnabled: true,
       comboBoxOptions: comboBoxOptions,
       onChange: function(value){
         //
