@@ -29,6 +29,7 @@ export default class WeeklyScheduleList {
             { name: 'nama_bagian', type: 'string' },
             { name: 'start_date', type: 'date', format: "yyyy-MM-ddTHH:mm:ss-HH:mm" },
             { name: 'end_date', type: 'date', format: "yyyy-MM-ddTHH:mm:ss-HH:mm" },
+            { name: 'pre_test', type: 'float' },
         ],
         id: "id",
         url: url
@@ -59,8 +60,9 @@ export default class WeeklyScheduleList {
           { text: 'Stambuk Baru', datafield: 'stambuk_baru', width: '15%' },
           { text: 'Nama', datafield: 'nama', width: '25%'},
           { text: 'Bagian', datafield: 'nama_bagian', width: '15%'},
-          { text: 'Tanggal Mulai', datafield: 'start_date', cellsformat: 'dd-MM-yyyy', width: '15%'},
-          { text: 'Tanggal Selesai', datafield: 'end_date', cellsformat: 'dd-MM-yyyy', width: '15%'},
+          { text: 'Tanggal Mulai', datafield: 'start_date', cellsformat: 'dd-MM-yyyy', width: '10%'},
+          { text: 'Tanggal Selesai', datafield: 'end_date', cellsformat: 'dd-MM-yyyy', width: '10%'},
+          { text: 'Pre-Test', datafield: 'pre_test', cellsalign: 'right', cellsformat: 'd2', width: '10%'},
         ],
         groups: []
     }
