@@ -71,14 +71,14 @@ export default class WeeklyScheduleList {
       source: source,
       onSearch: onSearch,
       onRowDoubleClick: function(data){
-        var editScoreWindow = new EditScoreWindow({
-          data: data,
-          onSaveSuccess: function(){
-            _this.dataGrid.refresh();
-          }
-        });
-        editScoreWindow.render($('#dialogWindowContainer'));
-        editScoreWindow.open();
+        // var editScoreWindow = new EditScoreWindow({
+        //   data: data,
+        //   onSaveSuccess: function(){
+        //     _this.dataGrid.refresh();
+        //   }
+        // });
+        // editScoreWindow.render($('#dialogWindowContainer'));
+        // editScoreWindow.open();
       },
       dataGridOptions: dataGridOptions
     });
