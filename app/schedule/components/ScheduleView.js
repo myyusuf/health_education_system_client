@@ -167,7 +167,7 @@ export default class ScheduleView {
       if(data[i].tipe_jadwal == 'PR'){
         this.ganttChartData.data.push({
           "id": data[i].id,
-          "text": data[i].nama,
+          "text": data[i].nama + " : " + data[i].stambuk_lama + " - " + data[i].stambuk_baru,
           "type": "project",
           "start_date": "",
           "duration": "",

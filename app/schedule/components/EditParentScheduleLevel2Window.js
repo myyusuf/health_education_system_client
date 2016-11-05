@@ -214,7 +214,7 @@ export default class EditParentScheduleLevel2Window {
     var form = new Form(formOptions);
 
     this.window = new AddWindow({
-      width: 330,
+      width: 430,
       height: 430,
       title: 'Edit Siswa Tingkat 2',
       content: form,

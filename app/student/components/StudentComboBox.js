@@ -9,7 +9,7 @@ export default class StudentComboBox {
     var studentLevel = options.studentLevel;
 
     var comboBoxOptions = {
-      displayMember: "nama",
+      displayMember: "nama_dan_stambuk",
       valueMember: "id",
       placeHolder: 'Pilih Siswa',
       width: '100%',

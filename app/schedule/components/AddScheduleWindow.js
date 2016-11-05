@@ -14,7 +14,6 @@ export default class AddScheduleWindow {
 
     var studentComboBox = new StudentComboBox({studentLevel: 1});
     var dateRange1 = new DateRange({
-      value: {startDate: null, endDate: null},
       width: '100%',
       height: 25
     });
@@ -112,7 +111,7 @@ export default class AddScheduleWindow {
     var form = new Form(formOptions);
 
     this.window = new AddWindow({
-      width: 330,
+      width: 430,
       height: 360,
       title: 'Tambah Siswa Tingkat 1',
       content: form,

@@ -129,7 +129,7 @@ export default class AddScheduleLevel2Window {
     var form = new Form(formOptions);
 
     this.window = new AddWindow({
-      width: 330,
+      width: 430,
       height: 430,
       title: 'Tambah Siswa Tingkat 2',
       content: form,
