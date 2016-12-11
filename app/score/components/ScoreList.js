@@ -43,6 +43,7 @@ export default class ScoreList {
             { name: 'post_test', type: 'float' },
             { name: 'nilai_akhir', type: 'float' },
             { name: 'seminar', type: 'float' },
+            { name: 'portofolio', type: 'float' },
             { name: 'rekomendasi_id', type: 'int' },
             { name: 'rekomendasi_nama', type: 'string' },
         ],
@@ -87,6 +88,7 @@ export default class ScoreList {
           { text: '35%', datafield: 'persentase35b', cellsalign: 'right', cellsformat: 'd2', width: 50},
           { text: 'Nilai Akhir', datafield: 'nilai_akhir', cellsalign: 'right', cellsformat: 'd2', width: 70},
           { text: 'Seminar', datafield: 'seminar', cellsalign: 'right', cellsformat: 'd2', width: 60},
+          { text: 'Portofolio', datafield: 'portofolio', cellsalign: 'right', cellsformat: 'd2', width: 60},
           { text: 'Rekomendasi', datafield: 'rekomendasi_nama', width: 200},
         ],
         groups: []

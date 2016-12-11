@@ -49,6 +49,7 @@ export default class EditScoreWindow {
     var postTestNumberInput = new NumberInput({value: score.post_test, width: '100%', height: 25});
     var nilaiAkhirNumberInput = new NumberInput({value: score.nilai_akhir, width: '100%', height: 25});
     var seminarNumberInput = new NumberInput({value: score.seminar, width: '100%', height: 25});
+    var portofolioNumberInput = new NumberInput({value: score.portofolio, width: '100%', height: 25});
 
     var formItems = [
       {
@@ -116,6 +117,11 @@ export default class EditScoreWindow {
         label: 'Seminar',
         content: seminarNumberInput
       },
+      {
+        name: 'portofolio',
+        label: 'Portofolio',
+        content: portofolioNumberInput
+      },
     ];
     var formOptions = {
       items: formItems,
@@ -143,7 +149,7 @@ export default class EditScoreWindow {
 
     this.window = new Window({
       width: 420,
-      height: 520,
+      height: 550,
       title: 'Edit Nilai',
       content: form,
       onSave: function(){
