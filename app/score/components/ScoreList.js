@@ -46,6 +46,7 @@ export default class ScoreList {
             { name: 'portofolio', type: 'float' },
             { name: 'rekomendasi_id', type: 'int' },
             { name: 'rekomendasi_nama', type: 'string' },
+            { name: 'judul_laporan_kasus', type: 'string' },
         ],
         id: "id",
         url: url
@@ -90,6 +91,7 @@ export default class ScoreList {
           { text: 'Seminar', datafield: 'seminar', cellsalign: 'right', cellsformat: 'd2', width: 60},
           { text: 'Portofolio', datafield: 'portofolio', cellsalign: 'right', cellsformat: 'd2', width: 60},
           { text: 'Rekomendasi', datafield: 'rekomendasi_nama', width: 200},
+          { text: 'Judul Laporan Kasus', datafield: 'judul_laporan_kasus', width: 200},
         ],
         groups: []
     }

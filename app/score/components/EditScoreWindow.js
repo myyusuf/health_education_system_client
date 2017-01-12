@@ -8,6 +8,7 @@ import NumberInput from '../../base/components/NumberInput';
 import HospitalComboBox from '../../hospital/components/HospitalComboBox';
 import ClinicComboBox from '../../hospital/components/ClinicComboBox';
 import RecommendationComboBox from '../../score/components/RecommendationComboBox';
+import TextBox from '../../base/components/TextBox';
 
 export default class EditScoreWindow {
 
@@ -50,6 +51,7 @@ export default class EditScoreWindow {
     var nilaiAkhirNumberInput = new NumberInput({value: score.nilai_akhir, width: '100%', height: 25});
     var seminarNumberInput = new NumberInput({value: score.seminar, width: '100%', height: 25});
     var portofolioNumberInput = new NumberInput({value: score.portofolio, width: '100%', height: 25});
+    var judulLaporanKasusTextBox = new TextBox({value: score.judul_laporan_kasus, height: 25, width: '100%'});
 
     var formItems = [
       {
@@ -122,6 +124,11 @@ export default class EditScoreWindow {
         label: 'Portofolio',
         content: portofolioNumberInput
       },
+      {
+        name: 'judul_laporan_kasus',
+        label: 'Judul Laporan Kasus',
+        content: judulLaporanKasusTextBox
+      },
     ];
     var formOptions = {
       items: formItems,
@@ -148,8 +155,8 @@ export default class EditScoreWindow {
     var form = new Form(formOptions);
 
     this.window = new Window({
-      width: 420,
-      height: 550,
+      width: 430,
+      height: 580,
       title: 'Edit Nilai',
       content: form,
       onSave: function(){
