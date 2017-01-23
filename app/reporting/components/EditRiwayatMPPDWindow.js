@@ -4,6 +4,7 @@ import Button from '../../base/components/Button';
 import Form from '../../base/components/Form';
 import AddWindow from '../../base/components/AddWindow';
 import TextBox from '../../base/components/TextBox';
+import CheckBox from '../../base/components/CheckBox';
 import Label from '../../base/components/Label';
 
 export default class EditRiwayatMPPDWindow {
@@ -17,19 +18,23 @@ export default class EditRiwayatMPPDWindow {
     var student = options.data;
     this.onSaveSuccess = options.onSaveSuccess;
 
-    var stambukLamaTextBox = new TextBox({height: 25, width: '100%'});
+    var checkBox1 = new CheckBox({height: 25, width: '100%',
+    label: 'Terlambat baca referat karena alasan pembimbing'});
+    var checkBox2 = new CheckBox({height: 25, width: '100%',
+    label: 'Terlambat baca referat karena alasan MPPD'});
     var stambukBaruTextBox = new TextBox({height: 25, width: '100%'});
     var nameTextBox = new TextBox({height: 25, width: '100%'});
 
     var formItems = [
       {
-        name: 'stambukLama',
-        label: 'Stambuk Lama',
-        content: stambukLamaTextBox,
-        validation:{
-          type: 'TEXTBOX',
-          rule: 'required'
-        }
+        name: 'checkBox1',
+        label: 'Masalah',
+        content: checkBox1
+      },
+      {
+        name: 'checkBox2',
+        label: '',
+        content: checkBox2
       },
       {
         name: 'stambukBaru',
