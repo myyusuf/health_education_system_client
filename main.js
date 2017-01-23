@@ -13,6 +13,7 @@ import HospitalList from "./app/hospital/components/HospitalList";
 import HospitalScheduleView from "./app/hospital/components/HospitalScheduleView";
 import ClinicScheduleView from "./app/hospital/components/ClinicScheduleView";
 import CostUnitReport from "./app/reporting/components/CostUnitReport";
+import RiwayatMPPDList from "./app/reporting/components/RiwayatMPPDList";
 
 var splitter = new Splitter();
 splitter.render($('#content-inside'));
@@ -66,6 +67,10 @@ var data = [
     expanded: true,
     items: [
       {
+        id: 'riwayat_mppd',
+        label: "Riwayat MPPD"
+      },
+      {
         id: 'cost_unit',
         label: "Cost Unit"
       }
@@ -94,6 +99,8 @@ var tree = new Tree({
          tabs.add(item.id, item.label, costUnitReport);
      }else if(item.id == 'data_rs'){
          tabs.add(item.id, item.label, hospitalList);
+     }else if(item.id == 'riwayat_mppd'){
+         tabs.add(item.id, item.label, riwayatMPPDList);
      }
    }
 
@@ -110,6 +117,7 @@ var hospitalList = new HospitalList();
 var costUnitReport = new CostUnitReport();
 var hospitalScheduleView = new HospitalScheduleView();
 var clinicScheduleView = new ClinicScheduleView();
+var riwayatMPPDList = new RiwayatMPPDList();
 
 var navigationBar = new NavigationBar([{
   title: 'Application',
