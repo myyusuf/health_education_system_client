@@ -135,6 +135,7 @@ var tabs = new Tabs([
     title: 'Jadwal Umum',
     content: scheduleView
   }
-]);
+],
+{});
 
 tabs.render($('#right-content'));

@@ -3,9 +3,17 @@ import { guid } from '../Utils';
 export default class Tabs {
 
 
-  constructor(items) {
+  constructor(items, options) {
     this.id = guid();
     this.items = items;
+
+    if(options.width){
+      this.width = options.width;
+    }
+
+    if(options.height){
+      this.height = options.height;
+    }
   }
 
   render(container) {
@@ -29,13 +37,23 @@ export default class Tabs {
       tempContainer.push(contentContainer);
     }
 
+    var width = '100%';
+    var height = '100.5%';
+
+    if(this.width){
+      width = this.width;
+    }
+
+    if(this.height){
+      height = this.height;
+    }
 
     tabContainer.jqxTabs({
       theme: 'metro',
       position: 'top',
       showCloseButtons: true,
-      width: '100%',
-      height: '100.5%'
+      width: width,
+      height: height
     });
 
     for (var i = 0; i < this.items.length; i++) {

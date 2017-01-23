@@ -4,8 +4,7 @@ import ToggleButton from '../../base/components/ToggleButton';
 import TextBox from '../../base/components/TextBox';
 import DataGrid from '../../base/components/DataGrid';
 import LevelComboBox from "../../student/components/LevelComboBox";
-import AddStudentWindow from '../../student/components/AddStudentWindow';
-import EditStudentWindow from '../../student/components/EditStudentWindow';
+import EditRiwayatMPPDWindow from '../../reporting/components/EditRiwayatMPPDWindow';
 
 export default class RiwayatMPPDList {
 
@@ -60,14 +59,14 @@ export default class RiwayatMPPDList {
       source: source,
       onSearch: onSearch,
       onRowDoubleClick: function(data){
-        var editStudentWindow = new EditStudentWindow({
+        var editRiwayatMPPDWindow = new EditRiwayatMPPDWindow({
           data: data,
           onSaveSuccess: function(){
             _this.dataGrid.refresh();
           }
         });
-        editStudentWindow.render($('#dialogWindowContainer'));
-        editStudentWindow.open();
+        editRiwayatMPPDWindow.render($('#dialogWindowContainer'));
+        editRiwayatMPPDWindow.open();
       },
       dataGridOptions: dataGridOptions
     });
