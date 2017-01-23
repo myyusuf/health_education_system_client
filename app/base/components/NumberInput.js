@@ -15,6 +15,8 @@ export default class NumberInput {
       this.height = options.height;
     }
 
+    this.basicProperties = options.basicProperties
+
     this.initialValue = options.value;
   }
 
@@ -38,6 +40,9 @@ export default class NumberInput {
     if(this.height){
       numberInputOptions['height'] = this.height;
     }
+
+    for(var k in _this.basicProperties) numberInputOptions[k] = _this.basicProperties[k];
+
     numberInputContainer.jqxNumberInput(numberInputOptions);
 
     if(this.initialValue){
