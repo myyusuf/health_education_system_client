@@ -1,5 +1,6 @@
 import { guid } from '../../base/Utils';
 import StudentInfo from './StudentInfo';
+import ScoreInfo from './ScoreInfo';
 import ProblemInfo from './ProblemInfo';
 import MedicalInfo from './MedicalInfo';
 import PermissionInfo from './PermissionInfo';
@@ -11,6 +12,7 @@ export default class StudentForm {
   constructor(student, options) {
     this.id = guid();
     this.studentInfo = new StudentInfo(student, {});
+    this.scoreInfo = new ScoreInfo(student, {});
     this.problemInfo = new ProblemInfo({});
     this.medicalInfo = new MedicalInfo({});
     this.permissionInfo = new PermissionInfo({});
@@ -30,6 +32,11 @@ export default class StudentForm {
     this.studentInfo.render(td);
 
     var tabs = new Tabs([
+      {
+        id: 'scoreInfo',
+        title: 'Nilai',
+        content: this.scoreInfo
+      },
       {
         id: 'problemInfo',
         title: 'Masalah',

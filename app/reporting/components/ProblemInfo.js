@@ -3,6 +3,7 @@ import Form from '../../base/components/Form';
 import NumberInput from '../../base/components/NumberInput';
 import CheckBox from '../../base/components/CheckBox';
 import Label from '../../base/components/Label';
+import TextArea from '../../base/components/TextArea';
 
 export default class ProblemInfo {
 
@@ -29,6 +30,12 @@ export default class ProblemInfo {
     label: 'Tidak lulus post test'});
     var checkBox10 = new CheckBox({height: 25, width: '100%',
     label: 'Terlambat keluar siklus karena jumlah kehadiran seminar <80%'});
+
+    var checkBox11 = new CheckBox({height: 25, width: '100%',
+    label: 'Tidak aktif tanpa keterangan'});
+
+    var descriptionTextArea = new TextArea({height: 80, width: '70%',
+    placeHolder: 'Deskripsi masalah'});
 
     var postTestCountNumberInput = new NumberInput({
       value: 0, width: '50%', height: 25,
@@ -96,6 +103,16 @@ export default class ProblemInfo {
         name: 'checkBox10',
         label: '',
         content: checkBox10
+      },
+      {
+        name: 'checkBox11',
+        label: '',
+        content: checkBox11
+      },
+      {
+        name: 'description',
+        label: '',
+        content: descriptionTextArea
       },
     ];
     var formOptions = {

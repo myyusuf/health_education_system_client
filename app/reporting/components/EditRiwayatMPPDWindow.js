@@ -18,8 +18,8 @@ export default class EditRiwayatMPPDWindow {
 
     this.window = new AddWindow({
       width: 550,
-      height: 600,
-      title: 'Edit Riwayat MPPD',
+      height: 700,
+      title: 'Riwayat MPPD',
       content: studentForm,
       onSave: function(){
         form.validate();
