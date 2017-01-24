@@ -1,6 +1,7 @@
 import { guid } from '../../base/Utils';
 import StudentInfo from './StudentInfo';
 import ProblemInfo from './ProblemInfo';
+import MedicalInfo from './MedicalInfo';
 import Tabs from "../../base/components/Tabs";
 
 export default class StudentForm {
@@ -9,6 +10,7 @@ export default class StudentForm {
     this.id = guid();
     this.studentInfo = new StudentInfo(student, {});
     this.problemInfo = new ProblemInfo({});
+    this.medicalInfo = new MedicalInfo({});
   }
 
   render(container) {
@@ -25,9 +27,14 @@ export default class StudentForm {
 
     var tabs = new Tabs([
       {
-        id: 'summary',
-        title: 'Summary',
+        id: 'problemInfo',
+        title: 'Masalah',
         content: this.problemInfo
+      },
+      {
+        id: 'medicalInfo',
+        title: 'Surat Sakit',
+        content: this.medicalInfo
       }
     ],
     {
