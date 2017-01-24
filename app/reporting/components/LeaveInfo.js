@@ -6,7 +6,7 @@ import CheckBox from '../../base/components/CheckBox';
 import Label from '../../base/components/Label';
 import DataGrid from '../../base/components/DataGrid';
 
-export default class Medicalnfo {
+export default class Leavelnfo {
 
   constructor(options) {
     this.id = guid();
@@ -21,7 +21,7 @@ export default class Medicalnfo {
           { name: 'id', type: 'int' },
           { name: 'medical_date', type: 'date', format: "yyyy-MM-ddTHH:mm:ss-HH:mm" },
           { name: 'description', type: 'string' },
-          { name: 'division', type: 'string' }
+          { name: 'level', type: 'string' }
         ],
         id: "id",
         url: url
@@ -40,7 +40,7 @@ export default class Medicalnfo {
         columns: [
           { text: 'Tanggal', datafield: 'medical_date', width: '33.33%' },
           { text: 'Keterangan', datafield: 'description', width: '33.33%' },
-          { text: 'Bagian', datafield: 'division', width: '33.33%' },
+          { text: 'Tingkat', datafield: 'level', width: '33.33%' },
         ],
         groups: []
     }
@@ -71,7 +71,7 @@ export default class Medicalnfo {
   render(container) {
 
     var addMedicalInfo = new Button({
-      title:'Tambah Surat Sakit',
+      title:'Tambah Surat Cuti',
       template: 'primary',
       height: 26,
       onClick: function(){

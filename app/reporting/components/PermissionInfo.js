@@ -6,7 +6,7 @@ import CheckBox from '../../base/components/CheckBox';
 import Label from '../../base/components/Label';
 import DataGrid from '../../base/components/DataGrid';
 
-export default class Medicalnfo {
+export default class Permissionlnfo {
 
   constructor(options) {
     this.id = guid();
@@ -71,7 +71,7 @@ export default class Medicalnfo {
   render(container) {
 
     var addMedicalInfo = new Button({
-      title:'Tambah Surat Sakit',
+      title:'Tambah Surat Izin',
       template: 'primary',
       height: 26,
       onClick: function(){

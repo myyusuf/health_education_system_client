@@ -2,6 +2,8 @@ import { guid } from '../../base/Utils';
 import StudentInfo from './StudentInfo';
 import ProblemInfo from './ProblemInfo';
 import MedicalInfo from './MedicalInfo';
+import PermissionInfo from './PermissionInfo';
+import LeaveInfo from './LeaveInfo';
 import Tabs from "../../base/components/Tabs";
 
 export default class StudentForm {
@@ -11,6 +13,8 @@ export default class StudentForm {
     this.studentInfo = new StudentInfo(student, {});
     this.problemInfo = new ProblemInfo({});
     this.medicalInfo = new MedicalInfo({});
+    this.permissionInfo = new PermissionInfo({});
+    this.leaveInfo = new LeaveInfo({});
   }
 
   render(container) {
@@ -35,6 +39,16 @@ export default class StudentForm {
         id: 'medicalInfo',
         title: 'Surat Sakit',
         content: this.medicalInfo
+      },
+      {
+        id: 'permissionInfo',
+        title: 'Surat Izin',
+        content: this.permissionInfo
+      },
+      {
+        id: 'leaveInfo',
+        title: 'Surat Cuti',
+        content: this.leaveInfo
       }
     ],
     {
