@@ -5,6 +5,7 @@ import NumberInput from '../../base/components/NumberInput';
 import CheckBox from '../../base/components/CheckBox';
 import Label from '../../base/components/Label';
 import DataGrid from '../../base/components/DataGrid';
+import AddMedicalInfoWindow from './AddMedicalInfoWindow';
 
 export default class Medicalnfo {
 
@@ -19,9 +20,10 @@ export default class Medicalnfo {
         datatype: "json",
         datafields: [
           { name: 'id', type: 'int' },
-          { name: 'medical_date', type: 'date', format: "yyyy-MM-ddTHH:mm:ss-HH:mm" },
-          { name: 'description', type: 'string' },
-          { name: 'division', type: 'string' }
+          { name: 'tanggal', type: 'date', format: "yyyy-MM-ddTHH:mm:ss-HH:mm" },
+          { name: 'keterangan', type: 'string' },
+          { name: 'jumlah_hari', type: 'string' },
+          { name: 'divisi', type: 'string' }
         ],
         id: "id",
         url: url
@@ -38,9 +40,10 @@ export default class Medicalnfo {
                     return params.data;
                 },
         columns: [
-          { text: 'Tanggal', datafield: 'medical_date', width: '33.33%' },
-          { text: 'Keterangan', datafield: 'description', width: '33.33%' },
-          { text: 'Bagian', datafield: 'division', width: '33.33%' },
+          { text: 'Tanggal', datafield: 'tanggal', width: '20%' },
+          { text: 'Keterangan', datafield: 'keterangan', width: '40%' },
+          { text: 'Jumlah Hari', datafield: 'jumlah_hari', width: '15%' },
+          { text: 'Bagian', datafield: 'divisi', width: '25%' },
         ],
         groups: []
     }
@@ -55,14 +58,14 @@ export default class Medicalnfo {
       source: source,
       onSearch: onSearch,
       onRowDoubleClick: function(data){
-        var editStudentWindow = new EditStudentWindow({
-          data: data,
-          onSaveSuccess: function(){
-            _this.dataGrid.refresh();
-          }
-        });
-        editStudentWindow.render($('#dialogWindowContainer'));
-        editStudentWindow.open();
+        // var editStudentWindow = new EditStudentWindow({
+        //   data: data,
+        //   onSaveSuccess: function(){
+        //     _this.dataGrid.refresh();
+        //   }
+        // });
+        // editStudentWindow.render($('#dialogWindowContainer'));
+        // editStudentWindow.open();
       },
       dataGridOptions: dataGridOptions
     });
@@ -75,13 +78,13 @@ export default class Medicalnfo {
       template: 'primary',
       height: 26,
       onClick: function(){
-        // var addStudentWindow = new AddStudentWindow({
-        //   onSaveSuccess: function(){
-        //     _this.dataGrid.refresh();
-        //   }
-        // });
-        // addStudentWindow.render($('#dialogWindowContainer'));
-        // addStudentWindow.open();
+        var addMedicalInfoWindow = new AddMedicalInfoWindow({
+          onSaveSuccess: function(){
+            _this.dataGrid.refresh();
+          }
+        });
+        addMedicalInfoWindow.render($('#dialogWindowContainer'));
+        addMedicalInfoWindow.open();
       }
     });
 
