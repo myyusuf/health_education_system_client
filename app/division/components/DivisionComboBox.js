@@ -10,7 +10,7 @@ export default class DivisionComboBox {
       displayMember: "nama",
       valueMember: "id",
       placeHolder: 'Pilih Bagian',
-      width: 200,
+      width: 220,
       height: 25,
       theme: 'metro'
     };

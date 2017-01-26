@@ -3,6 +3,9 @@ import Button from '../../base/components/Button';
 import Form from '../../base/components/Form';
 import AddWindow from '../../base/components/AddWindow';
 import TextBox from '../../base/components/TextBox';
+import DateInput from '../../base/components/DateInput';
+import TextArea from '../../base/components/TextArea';
+import NumberInput from '../../base/components/NumberInput';
 import Label from '../../base/components/Label';
 import DivisionComboBox from "../../division/components/DivisionComboBox";
 
@@ -17,38 +20,35 @@ export default class AddMedicalInfoWindow {
     var student = options.data;
     this.onSaveSuccess = options.onSaveSuccess;
 
+    var tanggalDateInput = new DateInput({height: 25, width: '90%'});
+    var descriptionTextArea = new TextArea({height: 80, width: '90%', placeHolder: ''});
+    var jumlahHariNumberInput = new NumberInput({
+      value: 1, width: '90%', height: 25,
+      basicProperties: {
+        min: 1,
+        max: 31,
+        decimalDigits: 0,
+        digits: 2,
+        spinButtons: true
+      }
+    });
     var divisionComboBox = new DivisionComboBox({});
-    var stambukLamaTextBox = new TextBox({height: 25, width: '100%'});
-    var stambukBaruTextBox = new TextBox({height: 25, width: '100%'});
-    var nameTextBox = new TextBox({height: 25, width: '100%'});
 
     var formItems = [
       {
-        name: 'stambukLama',
-        label: 'Stambuk Lama',
-        content: stambukLamaTextBox,
-        validation:{
-          type: 'TEXTBOX',
-          rule: 'required'
-        }
+        name: 'tanggal',
+        label: 'Tanggal',
+        content: tanggalDateInput
       },
       {
-        name: 'stambukBaru',
-        label: 'Stambuk Baru',
-        content: stambukBaruTextBox,
-        validation:{
-          type: 'TEXTBOX',
-          rule: 'required'
-        }
+        name: 'keterangan',
+        label: 'Keterangan',
+        content: descriptionTextArea
       },
       {
-        name: 'nama',
-        label: 'Nama',
-        content: nameTextBox,
-        validation:{
-          type: 'TEXTBOX',
-          rule: 'required'
-        }
+        name: 'jumlah_hari',
+        label: 'Jumlah Hari',
+        content: jumlahHariNumberInput
       },
       {
         name: 'tingkat',
@@ -66,7 +66,7 @@ export default class AddMedicalInfoWindow {
       onValidationSuccess: function(formValue){
         $.ajax({
               method: "POST",
-              url: "/students",
+              url: "/medicalinfo",
               data: formValue
             }).done(function() {
                 $("#successNotification").jqxNotification("open");
@@ -86,7 +86,7 @@ export default class AddMedicalInfoWindow {
 
     this.window = new AddWindow({
       width: 390,
-      height: 250,
+      height: 280,
       title: 'Tambah Siswa',
       content: form,
       onSave: function(){
