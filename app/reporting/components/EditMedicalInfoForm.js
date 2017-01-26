@@ -6,18 +6,19 @@ import TextBox from '../../base/components/TextBox';
 import DateInput from '../../base/components/DateInput';
 import TextArea from '../../base/components/TextArea';
 import NumberInput from '../../base/components/NumberInput';
+import FileUpload from '../../base/components/FileUpload';
 import Label from '../../base/components/Label';
 import DivisionComboBox from "../../division/components/DivisionComboBox";
 
-export default class AddMedicalInfoForm {
+export default class EditMedicalInfoForm {
 
   constructor(options) {
     this.id = guid();
 
-    var tanggalDateInput = new DateInput({height: 25, width: 220});
-    var descriptionTextArea = new TextArea({height: 80, width: 220, placeHolder: ''});
+    var tanggalDateInput = new DateInput({height: 25, width: '90%'});
+    var descriptionTextArea = new TextArea({height: 80, width: '90%', placeHolder: ''});
     var jumlahHariNumberInput = new NumberInput({
-      value: 1, width: 220, height: 25,
+      value: 1, width: '90%', height: 25,
       basicProperties: {
         min: 1,
         max: 31,
@@ -27,6 +28,12 @@ export default class AddMedicalInfoForm {
       }
     });
     var divisionComboBox = new DivisionComboBox({value: 1});
+
+    this.fileUpload = new FileUpload({
+      width: 220,
+      uploadUrl: 'upload.php',
+      fileInputName: 'fileToUpload'
+    });
 
     var formItems = [
       {
@@ -81,6 +88,20 @@ export default class AddMedicalInfoForm {
 
   render(container) {
 
-    this.form.render(container);
+    var table = $('<table style="height: 70%; width: 100%; "></table>');
+    var tr = $('<tr></tr>');
+    var td = $('<td style="padding: 0; height: 40px;"></td>');
+    table.appendTo(container);
+    tr.appendTo(table);
+    td.appendTo(tr);
+
+    this.form.render(td);
+
+    tr = $('<tr></tr>');
+    td = $('<td style="padding-left: 125px; height: 30px;"></td>');
+    tr.appendTo(table);
+    td.appendTo(tr);
+
+    this.fileUpload.render(td);
   }
 }

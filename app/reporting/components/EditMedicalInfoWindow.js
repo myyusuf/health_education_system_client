@@ -1,9 +1,9 @@
 import { guid } from '../../base/Utils';
 import Button from '../../base/components/Button';
 import AddWindow from '../../base/components/AddWindow';
-import AddMedicalInfoForm from "./AddMedicalInfoForm";
+import EditMedicalInfoForm from "./EditMedicalInfoForm";
 
-export default class AddMedicalInfoWindow {
+export default class EditMedicalInfoWindow {
 
   constructor(options) {
 
@@ -14,15 +14,15 @@ export default class AddMedicalInfoWindow {
     var student = options.data;
     this.onSaveSuccess = options.onSaveSuccess;
 
-    var addMedicalInfoForm = new AddMedicalInfoForm({});
+    var editMedicalInfoForm = new EditMedicalInfoForm({});
 
     this.window = new AddWindow({
       width: 390,
-      height: 300,
-      title: 'Tambah Surat Sakit',
+      height: 400,
+      title: 'Edit Surat Sakit',
       content: addMedicalInfoForm,
       onSave: function(){
-        addMedicalInfoForm.validate();
+        editMedicalInfoForm.validate();
       },
       onCancel: function(){
         _this.window.close();
