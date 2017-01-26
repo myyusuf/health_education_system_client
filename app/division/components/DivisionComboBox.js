@@ -3,7 +3,7 @@ import ComboBox from "../../base/components/ComboBox";
 
 export default class DivisionComboBox {
 
-  constructor() {
+  constructor(options) {
     this.id = guid();
 
     var comboBoxOptions = {
@@ -19,6 +19,7 @@ export default class DivisionComboBox {
       url: '/divisions_all',
       comboBoxOptions: comboBoxOptions,
       clearSelectionEnabled: true,
+      value: options.value,
       onChange: function(value){
         //
       }
