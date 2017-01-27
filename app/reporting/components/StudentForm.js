@@ -10,9 +10,16 @@ import Tabs from "../../base/components/Tabs";
 export default class StudentForm {
 
   constructor(options) {
+
+    var _this = this;
     this.id = guid();
     this.riwayatMppd = options.riwayatMppd;
-    this.studentInfo = new StudentInfo({student: {nama: 'marliyanti'}});
+    this.studentInfo = new StudentInfo({
+      student: {nama: 'marliyanti'},
+      onDivisionChange: function(value){
+        _this.medicalInfo.changeDivision(value);
+      }
+    });
     this.scoreInfo = new ScoreInfo({});
     this.problemInfo = new ProblemInfo({});
     this.medicalInfo = new MedicalInfo({riwayatMppdId: this.riwayatMppd.id});

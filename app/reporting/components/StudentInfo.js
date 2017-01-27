@@ -8,6 +8,7 @@ export default class StudentInfo {
   constructor(options) {
     this.id = guid();
     this.student = options.student;
+    this.onDivisionChange = options.onDivisionChange;
   }
 
   render(container) {
@@ -16,7 +17,9 @@ export default class StudentInfo {
 
     var nameStr = this.student.nama + ' [ ' + this.student.stambuk_lama + ' - ' + this.student.stambuk_baru + ' ]';
     var nameLabel = new Label({text: nameStr, bold: true});
-    var divisionComboBox = new DivisionComboBox({});
+    var divisionComboBox = new DivisionComboBox({
+      onChange: _this.onDivisionChange
+    });
 
     var table = $('<table style="height: 100%; width: 50%; margin: -3px; "></table>');
     var tr = $('<tr></tr>');

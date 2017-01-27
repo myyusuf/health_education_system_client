@@ -13,10 +13,11 @@ export default class Medicalnfo {
     this.id = guid();
 
     this.riwayatMppdId = options.riwayatMppdId;
+    this.bagianId = 0;
 
     var _this = this;
 
-    var url = "/medicalinfo/1";
+    var url = "/medicalinfo/" + this.riwayatMppdId;
 
     var source = {
         datatype: "json",
@@ -25,7 +26,9 @@ export default class Medicalnfo {
           { name: 'tanggal', type: 'date', format: "yyyy-MM-ddTHH:mm:ss-HH:mm" },
           { name: 'keterangan', type: 'string' },
           { name: 'jumlah_hari', type: 'string' },
-          { name: 'bagian', type: 'string' }
+          { name: 'bagian_id', type: 'int' },
+          { name: 'bagian_code', type: 'string' },
+          { name: 'bagian_nama', type: 'string' },
         ],
         id: "id",
         url: url
@@ -42,10 +45,10 @@ export default class Medicalnfo {
                     return params.data;
                 },
         columns: [
-          { text: 'Tanggal', datafield: 'tanggal', width: '20%' },
+          { text: 'Tanggal', datafield: 'tanggal', cellsformat: 'dd-MM-yyyy', width: '20%' },
           { text: 'Keterangan', datafield: 'keterangan', width: '40%' },
-          { text: 'Jumlah Hari', datafield: 'jumlah_hari', width: '15%' },
-          { text: 'Bagian', datafield: 'bagian', width: '25%' },
+          { text: 'Jumlah Hari', datafield: 'jumlah_hari', cellsalign: 'right', cellsformat: 'd', width: '15%' },
+          { text: 'Bagian', datafield: 'bagian_nama', width: '25%' },
         ],
         groups: []
     }
@@ -53,6 +56,7 @@ export default class Medicalnfo {
     var onSearch = function(data) {
           // data['searchTxt'] = searchTextBox.getValue();
           // data['level'] = levelComboBox.getValue();
+          data['bagian'] = _this.bagianId;
           return data;
     }
 
@@ -115,5 +119,10 @@ export default class Medicalnfo {
 
     this.dataGrid.render(td);
 
+  }
+
+  changeDivision(bagianId){
+    this.bagianId = bagianId;
+    this.dataGrid.refresh();
   }
 }

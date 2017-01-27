@@ -21,7 +21,9 @@ export default class DivisionComboBox {
       clearSelectionEnabled: true,
       value: options.value,
       onChange: function(value){
-        //
+        if(options.onChange){
+          options.onChange(value);
+        }
       }
     });
 

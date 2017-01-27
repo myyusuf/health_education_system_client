@@ -14,7 +14,13 @@ export default class AddMedicalInfoWindow {
     this.onSaveSuccess = options.onSaveSuccess;
 
     var addMedicalInfoForm = new AddMedicalInfoForm({
-      riwayatMppdId: options.riwayatMppdId
+      riwayatMppdId: options.riwayatMppdId,
+      onSaveSuccess: function(){
+        _this.window.close();
+        if(_this.onSaveSuccess){
+          _this.onSaveSuccess();
+        }
+      }
     });
 
     this.window = new AddWindow({

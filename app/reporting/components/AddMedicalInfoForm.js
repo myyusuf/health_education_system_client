@@ -18,6 +18,7 @@ export default class AddMedicalInfoForm {
     this.id = guid();
 
     this.riwayatMppdId = options.riwayatMppdId;
+    this.onSaveSuccess = options.onSaveSuccess;
 
     var tanggalDateInput = new DateInput({height: 25, width: 220});
     var descriptionTextArea = new TextArea({height: 80, width: 220, placeHolder: ''});
@@ -71,7 +72,6 @@ export default class AddMedicalInfoForm {
               data: formValue
             }).done(function() {
                 $("#successNotification").jqxNotification("open");
-                _this.window.close();
                 if(_this.onSaveSuccess){
                   _this.onSaveSuccess();
                 }
