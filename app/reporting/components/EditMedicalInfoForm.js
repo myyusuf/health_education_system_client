@@ -14,15 +14,18 @@ import ViewImageWindow from "./ViewImageWindow";
 export default class EditMedicalInfoForm {
 
   constructor(options) {
+
+    var _this = this;
+
     this.id = guid();
 
     this.medicalInfo = options.medicalInfo;
     this.onSaveSuccess = options.onSaveSuccess;
 
-    var tanggalDateInput = new DateInput({height: 25, width: '90%'});
-    var descriptionTextArea = new TextArea({height: 80, width: '90%', placeHolder: ''});
+    var tanggalDateInput = new DateInput({value: _this.medicalInfo.tanngal, height: 25, width: '90%'});
+    var descriptionTextArea = new TextArea({value: _this.medicalInfo.keterangan, height: 80, width: '90%', placeHolder: ''});
     var jumlahHariNumberInput = new NumberInput({
-      value: 1, width: '90%', height: 25,
+      value: _this.medicalInfo.jumlah_hari, width: '90%', height: 25,
       basicProperties: {
         min: 1,
         max: 31,
@@ -31,7 +34,7 @@ export default class EditMedicalInfoForm {
         spinButtons: true
       }
     });
-    var divisionComboBox = new DivisionComboBox({value: 1});
+    var divisionComboBox = new DivisionComboBox({value: _this.medicalInfo.bagian_id});
 
     this.fileUpload = new FileUpload({
       width: 220,
@@ -70,12 +73,12 @@ export default class EditMedicalInfoForm {
       labelColumnWidth: '120px',
       onValidationSuccess: function(formValue){
         $.ajax({
-              method: "POST",
-              url: "/medicalinfo",
+              method: "PUT",
+              url: "/medicalinfo/" + _this.medicalInfo.id,
               data: formValue
             }).done(function() {
                 $("#successNotification").jqxNotification("open");
-                _this.window.close();
+                
                 if(_this.onSaveSuccess){
                   _this.onSaveSuccess();
                 }
@@ -114,8 +117,9 @@ export default class EditMedicalInfoForm {
       template: 'primary',
       height: 26,
       onClick: function(){
+
         var viewImageWindow = new ViewImageWindow({
-          url: 'medicalinfo_image/' + _this.medicalInfo.id
+          url: 'medicalinfo_image/' + _this.medicalInfo.id + "?" + guid()
         });
         viewImageWindow.render($('#dialogWindowContainer'));
         viewImageWindow.open();
@@ -129,5 +133,9 @@ export default class EditMedicalInfoForm {
 
     viewImage.render(td);
 
+  }
+
+  validate(){
+    this.form.validate();
   }
 }

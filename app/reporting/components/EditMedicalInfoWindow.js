@@ -14,7 +14,13 @@ export default class EditMedicalInfoWindow {
     this.onSaveSuccess = options.onSaveSuccess;
 
     var editMedicalInfoForm = new EditMedicalInfoForm({
-      medicalInfo: options.medicalInfo
+      medicalInfo: options.medicalInfo,
+      onSaveSuccess: function(){
+        _this.window.close();
+        if(_this.onSaveSuccess){
+          _this.onSaveSuccess();
+        }
+      }
     });
 
     this.window = new AddWindow({

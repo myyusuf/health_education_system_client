@@ -16,7 +16,7 @@ export default class ViewImageWindow {
 
     var imageView = {
       render: function(container){
-        var image = $('<img src="' + url + '" style="height: 520px; width: 100%;"/>');
+        var image = $('<img src="' + url + '" style=""/>');
         image.appendTo(container);
       }
     };
