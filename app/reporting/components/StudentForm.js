@@ -9,12 +9,13 @@ import Tabs from "../../base/components/Tabs";
 
 export default class StudentForm {
 
-  constructor(student, options) {
+  constructor(options) {
     this.id = guid();
-    this.studentInfo = new StudentInfo(student, {});
-    this.scoreInfo = new ScoreInfo(student, {});
+    this.riwayatMppd = options.riwayatMppd;
+    this.studentInfo = new StudentInfo({student: {nama: 'marliyanti'}});
+    this.scoreInfo = new ScoreInfo({});
     this.problemInfo = new ProblemInfo({});
-    this.medicalInfo = new MedicalInfo({});
+    this.medicalInfo = new MedicalInfo({riwayatMppdId: this.riwayatMppd.id});
     this.permissionInfo = new PermissionInfo({});
     this.leaveInfo = new LeaveInfo({});
   }

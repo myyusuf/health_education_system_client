@@ -5,9 +5,9 @@ import DivisionComboBox from "../../division/components/DivisionComboBox";
 
 export default class StudentInfo {
 
-  constructor(student, options) {
+  constructor(options) {
     this.id = guid();
-    this.student = student;
+    this.student = options.student;
   }
 
   render(container) {

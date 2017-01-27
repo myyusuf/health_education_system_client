@@ -12,9 +12,11 @@ export default class Medicalnfo {
   constructor(options) {
     this.id = guid();
 
+    this.riwayatMppdId = options.riwayatMppdId;
+
     var _this = this;
 
-    var url = "/students";
+    var url = "/medicalinfo/1";
 
     var source = {
         datatype: "json",
@@ -23,7 +25,7 @@ export default class Medicalnfo {
           { name: 'tanggal', type: 'date', format: "yyyy-MM-ddTHH:mm:ss-HH:mm" },
           { name: 'keterangan', type: 'string' },
           { name: 'jumlah_hari', type: 'string' },
-          { name: 'divisi', type: 'string' }
+          { name: 'bagian', type: 'string' }
         ],
         id: "id",
         url: url
@@ -43,7 +45,7 @@ export default class Medicalnfo {
           { text: 'Tanggal', datafield: 'tanggal', width: '20%' },
           { text: 'Keterangan', datafield: 'keterangan', width: '40%' },
           { text: 'Jumlah Hari', datafield: 'jumlah_hari', width: '15%' },
-          { text: 'Bagian', datafield: 'divisi', width: '25%' },
+          { text: 'Bagian', datafield: 'bagian', width: '25%' },
         ],
         groups: []
     }
@@ -73,12 +75,15 @@ export default class Medicalnfo {
 
   render(container) {
 
+    var _this = this;
+
     var addMedicalInfo = new Button({
       title:'Tambah Surat Sakit',
       template: 'primary',
       height: 26,
       onClick: function(){
         var addMedicalInfoWindow = new AddMedicalInfoWindow({
+          riwayatMppdId: _this.riwayatMppdId,
           onSaveSuccess: function(){
             _this.dataGrid.refresh();
           }

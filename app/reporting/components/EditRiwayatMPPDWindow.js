@@ -11,10 +11,10 @@ export default class EditRiwayatMPPDWindow {
 
     this.id = guid();
 
-    var student = options.data;
+    var riwayatMppd = options.data;
     this.onSaveSuccess = options.onSaveSuccess;
 
-    var studentForm = new StudentForm(student, {});
+    var studentForm = new StudentForm({riwayatMppd: riwayatMppd});
 
     this.window = new AddWindow({
       width: 550,

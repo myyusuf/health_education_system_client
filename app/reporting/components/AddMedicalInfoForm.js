@@ -12,7 +12,12 @@ import DivisionComboBox from "../../division/components/DivisionComboBox";
 export default class AddMedicalInfoForm {
 
   constructor(options) {
+
+    var _this = this;
+
     this.id = guid();
+
+    this.riwayatMppdId = options.riwayatMppdId;
 
     var tanggalDateInput = new DateInput({height: 25, width: 220});
     var descriptionTextArea = new TextArea({height: 80, width: 220, placeHolder: ''});
@@ -45,7 +50,7 @@ export default class AddMedicalInfoForm {
         content: jumlahHariNumberInput
       },
       {
-        name: 'bagian',
+        name: 'bagian_id',
         label: 'Bagian',
         content: divisionComboBox,
         validation:{
@@ -58,6 +63,8 @@ export default class AddMedicalInfoForm {
       items: formItems,
       labelColumnWidth: '120px',
       onValidationSuccess: function(formValue){
+
+        formValue['riwayat_mppd_id'] = _this.riwayatMppdId;
         $.ajax({
               method: "POST",
               url: "/medicalinfo",
@@ -77,6 +84,10 @@ export default class AddMedicalInfoForm {
     }
 
     this.form = new Form(formOptions);
+  }
+
+  validate(){
+    this.form.validate();
   }
 
   render(container) {

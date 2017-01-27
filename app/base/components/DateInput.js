@@ -53,6 +53,6 @@ export default class DateInput {
   }
 
   getValue(){
-    return this.dateInputContainer.jqxDateTimeInput('val');
+    return this.dateInputContainer.jqxDateTimeInput('getDate');
   }
 }

@@ -11,10 +11,11 @@ export default class AddMedicalInfoWindow {
 
     this.id = guid();
 
-    var student = options.data;
     this.onSaveSuccess = options.onSaveSuccess;
 
-    var addMedicalInfoForm = new AddMedicalInfoForm({});
+    var addMedicalInfoForm = new AddMedicalInfoForm({
+      riwayatMppdId: options.riwayatMppdId
+    });
 
     this.window = new AddWindow({
       width: 390,
