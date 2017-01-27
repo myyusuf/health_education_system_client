@@ -15,6 +15,9 @@ export default class EditMedicalInfoForm {
   constructor(options) {
     this.id = guid();
 
+    this.medicalInfo = options.medicalInfo;
+    this.onSaveSuccess = options.onSaveSuccess;
+
     var tanggalDateInput = new DateInput({height: 25, width: '90%'});
     var descriptionTextArea = new TextArea({height: 80, width: '90%', placeHolder: ''});
     var jumlahHariNumberInput = new NumberInput({
@@ -31,8 +34,8 @@ export default class EditMedicalInfoForm {
 
     this.fileUpload = new FileUpload({
       width: 220,
-      uploadUrl: 'upload.php',
-      fileInputName: 'fileToUpload'
+      uploadUrl: 'medicalinfo_upload/' + this.medicalInfo.id,
+      fileInputName: 'theFile'
     });
 
     var formItems = [
@@ -101,7 +104,31 @@ export default class EditMedicalInfoForm {
     td = $('<td style="padding-left: 125px; height: 30px;"></td>');
     tr.appendTo(table);
     td.appendTo(tr);
-
     this.fileUpload.render(td);
+
+    var viewImage = new Button({
+      title:'View Image',
+      template: 'primary',
+      height: 26,
+      onClick: function(){
+        // var addMedicalInfoWindow = new AddMedicalInfoWindow({
+        //   riwayatMppdId: _this.riwayatMppdId,
+        //   bagianId: _this.bagianId,
+        //   onSaveSuccess: function(){
+        //     _this.dataGrid.refresh();
+        //   }
+        // });
+        // addMedicalInfoWindow.render($('#dialogWindowContainer'));
+        // addMedicalInfoWindow.open();
+      }
+    });
+
+    tr = $('<tr></tr>');
+    td = $('<td style="padding-left: 125px; height: 30px;"></td>');
+    tr.appendTo(table);
+    td.appendTo(tr);
+
+    viewImage.render(td);
+
   }
 }

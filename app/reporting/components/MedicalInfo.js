@@ -6,6 +6,7 @@ import CheckBox from '../../base/components/CheckBox';
 import Label from '../../base/components/Label';
 import DataGrid from '../../base/components/DataGrid';
 import AddMedicalInfoWindow from './AddMedicalInfoWindow';
+import EditMedicalInfoWindow from './EditMedicalInfoWindow';
 
 export default class Medicalnfo {
 
@@ -64,14 +65,14 @@ export default class Medicalnfo {
       source: source,
       onSearch: onSearch,
       onRowDoubleClick: function(data){
-        // var editStudentWindow = new EditStudentWindow({
-        //   data: data,
-        //   onSaveSuccess: function(){
-        //     _this.dataGrid.refresh();
-        //   }
-        // });
-        // editStudentWindow.render($('#dialogWindowContainer'));
-        // editStudentWindow.open();
+        var editMedicalInfoWindow = new EditMedicalInfoWindow({
+          medicalInfo: data,
+          onSaveSuccess: function(){
+            _this.dataGrid.refresh();
+          }
+        });
+        editMedicalInfoWindow.render($('#dialogWindowContainer'));
+        editMedicalInfoWindow.open();
       },
       dataGridOptions: dataGridOptions
     });

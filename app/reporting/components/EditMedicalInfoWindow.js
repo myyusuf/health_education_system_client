@@ -11,16 +11,17 @@ export default class EditMedicalInfoWindow {
 
     this.id = guid();
 
-    var student = options.data;
     this.onSaveSuccess = options.onSaveSuccess;
 
-    var editMedicalInfoForm = new EditMedicalInfoForm({});
+    var editMedicalInfoForm = new EditMedicalInfoForm({
+      medicalInfo: options.medicalInfo
+    });
 
     this.window = new AddWindow({
       width: 390,
-      height: 400,
+      height: 430,
       title: 'Edit Surat Sakit',
-      content: addMedicalInfoForm,
+      content: editMedicalInfoForm,
       onSave: function(){
         editMedicalInfoForm.validate();
       },

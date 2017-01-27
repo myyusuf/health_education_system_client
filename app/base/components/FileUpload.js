@@ -46,6 +46,7 @@ export default class FileUpload {
     fileUploadOptions['uploadUrl'] = this.uploadUrl;
     fileUploadOptions['fileInputName'] = this.fileInputName;
     fileUploadOptions['multipleFilesUpload'] = false;
+    fileUploadOptions['autoUpload'] = true;
 
     fileUploadContainer.jqxFileUpload(fileUploadOptions);
 
