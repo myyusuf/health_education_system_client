@@ -88,6 +88,7 @@ export default class Medicalnfo {
       onClick: function(){
         var addMedicalInfoWindow = new AddMedicalInfoWindow({
           riwayatMppdId: _this.riwayatMppdId,
+          bagianId: _this.bagianId,
           onSaveSuccess: function(){
             _this.dataGrid.refresh();
           }

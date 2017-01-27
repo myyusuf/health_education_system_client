@@ -15,6 +15,7 @@ export default class AddMedicalInfoWindow {
 
     var addMedicalInfoForm = new AddMedicalInfoForm({
       riwayatMppdId: options.riwayatMppdId,
+      bagianId: options.bagianId,
       onSaveSuccess: function(){
         _this.window.close();
         if(_this.onSaveSuccess){

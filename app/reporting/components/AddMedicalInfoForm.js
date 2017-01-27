@@ -32,7 +32,7 @@ export default class AddMedicalInfoForm {
         spinButtons: true
       }
     });
-    var divisionComboBox = new DivisionComboBox({value: 1});
+    var divisionComboBox = new DivisionComboBox({value: options.bagianId});
 
     var formItems = [
       {
