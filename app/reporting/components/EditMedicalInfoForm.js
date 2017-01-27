@@ -9,6 +9,7 @@ import NumberInput from '../../base/components/NumberInput';
 import FileUpload from '../../base/components/FileUpload';
 import Label from '../../base/components/Label';
 import DivisionComboBox from "../../division/components/DivisionComboBox";
+import ViewImageWindow from "./ViewImageWindow";
 
 export default class EditMedicalInfoForm {
 
@@ -91,6 +92,8 @@ export default class EditMedicalInfoForm {
 
   render(container) {
 
+    var _this = this;
+
     var table = $('<table style="height: 70%; width: 100%; "></table>');
     var tr = $('<tr></tr>');
     var td = $('<td style="padding: 0; height: 40px;"></td>');
@@ -111,15 +114,11 @@ export default class EditMedicalInfoForm {
       template: 'primary',
       height: 26,
       onClick: function(){
-        // var addMedicalInfoWindow = new AddMedicalInfoWindow({
-        //   riwayatMppdId: _this.riwayatMppdId,
-        //   bagianId: _this.bagianId,
-        //   onSaveSuccess: function(){
-        //     _this.dataGrid.refresh();
-        //   }
-        // });
-        // addMedicalInfoWindow.render($('#dialogWindowContainer'));
-        // addMedicalInfoWindow.open();
+        var viewImageWindow = new ViewImageWindow({
+          url: 'medicalinfo_image/' + _this.medicalInfo.id
+        });
+        viewImageWindow.render($('#dialogWindowContainer'));
+        viewImageWindow.open();
       }
     });
 
