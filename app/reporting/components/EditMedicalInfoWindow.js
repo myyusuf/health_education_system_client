@@ -1,6 +1,6 @@
 import { guid } from '../../base/Utils';
 import Button from '../../base/components/Button';
-import AddWindow from '../../base/components/AddWindow';
+import EditWindow from '../../base/components/EditWindow';
 import EditMedicalInfoForm from "./EditMedicalInfoForm";
 
 export default class EditMedicalInfoWindow {
@@ -12,9 +12,10 @@ export default class EditMedicalInfoWindow {
     this.id = guid();
 
     this.onSaveSuccess = options.onSaveSuccess;
+    this.medicalInfo = options.medicalInfo;
 
     var editMedicalInfoForm = new EditMedicalInfoForm({
-      medicalInfo: options.medicalInfo,
+      medicalInfo: this.medicalInfo,
       onSaveSuccess: function(){
         _this.window.close();
         if(_this.onSaveSuccess){
@@ -23,7 +24,7 @@ export default class EditMedicalInfoWindow {
       }
     });
 
-    this.window = new AddWindow({
+    this.window = new EditWindow({
       width: 390,
       height: 430,
       title: 'Edit Surat Sakit',
@@ -33,6 +34,26 @@ export default class EditMedicalInfoWindow {
       },
       onCancel: function(){
         _this.window.close();
+      },
+      onDelete: function(){
+        var r = confirm("Proses hapus data akan dilakukan!");
+        if (r == true) {
+          $.ajax({
+                method: "DELETE",
+                url: "/medicalinfo/" + _this.medicalInfo.id,
+                data: { }
+              }).done(function() {
+                $("#successNotification").jqxNotification("open");
+                _this.window.close();
+                if(_this.onSaveSuccess){
+                  _this.onSaveSuccess();
+                }
+              }).fail(function() {
+                var errorMessage = 'Proses gagal. Status : ' + jqXHR.status + ' [' + jqXHR.statusText + '] : ' + jqXHR.responseText;
+                $("#errorNotification").html('<div>' + errorMessage + '</div>');
+                $("#errorNotification").jqxNotification("open");
+              });
+        }
       }
     });
 
