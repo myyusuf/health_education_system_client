@@ -22,7 +22,7 @@ export default class EditRiwayatMPPDWindow {
       title: 'Riwayat MPPD',
       content: studentForm,
       onSave: function(){
-        form.validate();
+        studentForm.validate();
       },
       onCancel: function(){
         _this.window.close();

@@ -50,67 +50,67 @@ export default class ProblemInfo {
 
     var formItems = [
       {
-        name: 'checkBox1',
+        name: 'masalah1',
         label: '',
         content: checkBox1
       },
       {
-        name: 'checkBox2',
+        name: 'masalah2',
         label: '',
         content: checkBox2
       },
       {
-        name: 'checkBox3',
+        name: 'masalah3',
         label: '',
         content: checkBox3
       },
       {
-        name: 'checkBox4',
+        name: 'masalah4',
         label: '',
         content: checkBox4
       },
       {
-        name: 'checkBox5',
+        name: 'masalah5',
         label: '',
         content: checkBox5
       },
       {
-        name: 'checkBox6',
+        name: 'masalah6',
         label: '',
         content: checkBox6
       },
       {
-        name: 'checkBox7',
+        name: 'masalah7',
         label: '',
         content: checkBox7
       },
       {
-        name: 'checkBox8',
+        name: 'masalah8',
         label: '',
         content: checkBox8
       },
       {
-        name: 'checkBox9',
+        name: 'masalah9',
         label: '',
         content: checkBox9
       },
       {
-        name: 'postTestCount',
+        name: 'jumlah_hari_post_tes',
         label: '',
         content: postTestCountNumberInput
       },
       {
-        name: 'checkBox10',
+        name: 'masalah10',
         label: '',
         content: checkBox10
       },
       {
-        name: 'checkBox11',
+        name: 'masalah11',
         label: '',
         content: checkBox11
       },
       {
-        name: 'description',
+        name: 'keterangan',
         label: '',
         content: descriptionTextArea
       },
@@ -121,7 +121,7 @@ export default class ProblemInfo {
       onValidationSuccess: function(formValue){
         $.ajax({
               method: "POST",
-              url: "/students",
+              url: "/probleminfo",
               data: formValue
             }).done(function() {
                 $("#successNotification").jqxNotification("open");
@@ -142,5 +142,9 @@ export default class ProblemInfo {
 
   render(container) {
     this.form.render(container);
+  }
+
+  changeDivision(bagianId){
+    this.bagianId = bagianId;
   }
 }

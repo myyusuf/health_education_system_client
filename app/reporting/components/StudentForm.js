@@ -18,13 +18,14 @@ export default class StudentForm {
       student: {nama: 'marliyanti'},
       onDivisionChange: function(value){
         _this.medicalInfo.changeDivision(value);
+        _this.problemInfo.changeDivision(value);
       }
     });
-    this.scoreInfo = new ScoreInfo({});
-    this.problemInfo = new ProblemInfo({});
+    this.scoreInfo = new ScoreInfo({riwayatMppdId: this.riwayatMppd.id});
+    this.problemInfo = new ProblemInfo({riwayatMppdId: this.riwayatMppd.id});
     this.medicalInfo = new MedicalInfo({riwayatMppdId: this.riwayatMppd.id});
-    this.permissionInfo = new PermissionInfo({});
-    this.leaveInfo = new LeaveInfo({});
+    this.permissionInfo = new PermissionInfo({riwayatMppdId: this.riwayatMppd.id});
+    this.leaveInfo = new LeaveInfo({riwayatMppdId: this.riwayatMppd.id});
   }
 
   render(container) {
