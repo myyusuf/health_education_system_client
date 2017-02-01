@@ -59,4 +59,8 @@ export default class NumberInput {
   getValue(){
     return this.numberInputContainer.val();
   }
+
+  setValue(value){
+    return this.numberInputContainer.val(value);
+  }
 }

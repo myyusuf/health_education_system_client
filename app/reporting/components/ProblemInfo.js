@@ -10,6 +10,8 @@ export default class ProblemInfo {
   constructor(options) {
     this.id = guid();
 
+    this.riwayatMppdId = options.riwayatMppdId;
+    this.bagianId = 0;
     this.onSaveSuccess = options.onSaveSuccess;
 
     var checkBox1 = new CheckBox({height: 25, width: '100%',
@@ -49,6 +51,20 @@ export default class ProblemInfo {
         spinButtons: true
       }
     });
+
+    this.checkBox1 = checkBox1;
+    this.checkBox2 = checkBox2;
+    this.checkBox3 = checkBox3;
+    this.checkBox4 = checkBox4;
+    this.checkBox5 = checkBox5;
+    this.checkBox6 = checkBox6;
+    this.checkBox7 = checkBox7;
+    this.checkBox8 = checkBox8;
+    this.checkBox9 = checkBox9;
+    this.checkBox10 = checkBox10;
+    this.checkBox11 = checkBox11;
+    this.descriptionTextArea = descriptionTextArea;
+    this.postTestCountNumberInput = postTestCountNumberInput;
 
     var formItems = [
       {
@@ -148,6 +164,56 @@ export default class ProblemInfo {
 
   changeDivision(bagianId){
     this.bagianId = bagianId;
+  }
+
+  changeDivision(bagianId){
+
+    var _this = this;
+
+    var url = 'probleminfo/' + this.riwayatMppdId;
+
+    $.ajax({
+      method: "GET",
+      url: url ,
+      data: {
+        bagian: bagianId
+      }
+    }).done(function(data) {
+
+      if(data.length > 0){
+        _this.checkBox1.setValue(data[0].masalah1);
+        _this.checkBox2.setValue(data[0].masalah2);
+        _this.checkBox3.setValue(data[0].masalah3);
+        _this.checkBox4.setValue(data[0].masalah4);
+        _this.checkBox5.setValue(data[0].masalah5);
+        _this.checkBox6.setValue(data[0].masalah6);
+        _this.checkBox7.setValue(data[0].masalah7);
+        _this.checkBox8.setValue(data[0].masalah8);
+        _this.checkBox9.setValue(data[0].masalah9);
+        _this.checkBox10.setValue(data[0].masalah10);
+        _this.checkBox11.setValue(data[0].masalah11);
+        _this.postTestCountNumberInput.setValue(data[0].jumlah_hari_post_test);
+        _this.descriptionTextArea.setValue(data[0].keterangan);
+      }else{
+        _this.checkBox1.setValue(0);
+        _this.checkBox2.setValue(0);
+        _this.checkBox3.setValue(0);
+        _this.checkBox4.setValue(0);
+        _this.checkBox5.setValue(0);
+        _this.checkBox6.setValue(0);
+        _this.checkBox7.setValue(0);
+        _this.checkBox8.setValue(0);
+        _this.checkBox9.setValue(0);
+        _this.checkBox10.setValue(0);
+        _this.checkBox11.setValue(0);
+        _this.postTestCountNumberInput.setValue(0);
+        _this.descriptionTextArea.setValue('');
+      }
+
+
+    }).fail(function() {
+        alert('Error while doing operation');
+    });
   }
 
   validate(){
