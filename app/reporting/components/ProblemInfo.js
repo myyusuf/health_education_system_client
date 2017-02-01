@@ -8,6 +8,9 @@ import TextArea from '../../base/components/TextArea';
 export default class ProblemInfo {
 
   constructor(options) {
+
+    var _this = this;
+
     this.id = guid();
 
     this.riwayatMppdId = options.riwayatMppdId;
@@ -137,6 +140,10 @@ export default class ProblemInfo {
       items: formItems,
       labelColumnWidth: '40px',
       onValidationSuccess: function(formValue){
+
+        formValue['riwayat_mppd_id'] = _this.riwayatMppdId;
+        formValue['bagian_id'] = _this.bagianId;
+
         $.ajax({
               method: "POST",
               url: "/probleminfo",
@@ -163,12 +170,10 @@ export default class ProblemInfo {
   }
 
   changeDivision(bagianId){
-    this.bagianId = bagianId;
-  }
-
-  changeDivision(bagianId){
 
     var _this = this;
+
+    this.bagianId = bagianId;
 
     var url = 'probleminfo/' + this.riwayatMppdId;
 
