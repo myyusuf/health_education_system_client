@@ -10,6 +10,8 @@ export default class ProblemInfo {
   constructor(options) {
     this.id = guid();
 
+    this.onSaveSuccess = options.onSaveSuccess;
+
     var checkBox1 = new CheckBox({height: 25, width: '100%',
     label: 'Terlambat baca referat karena alasan pembimbing'});
     var checkBox2 = new CheckBox({height: 25, width: '100%',
@@ -95,7 +97,7 @@ export default class ProblemInfo {
         content: checkBox9
       },
       {
-        name: 'jumlah_hari_post_tes',
+        name: 'jumlah_hari_post_test',
         label: '',
         content: postTestCountNumberInput
       },
@@ -146,5 +148,9 @@ export default class ProblemInfo {
 
   changeDivision(bagianId){
     this.bagianId = bagianId;
+  }
+
+  validate(){
+    this.form.validate();
   }
 }

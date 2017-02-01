@@ -28,6 +28,10 @@ export default class StudentForm {
     this.leaveInfo = new LeaveInfo({riwayatMppdId: this.riwayatMppd.id});
   }
 
+  validate(){
+    this.problemInfo.validate();
+  }
+
   render(container) {
 
     var _this = this;
