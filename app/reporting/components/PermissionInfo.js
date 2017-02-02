@@ -38,7 +38,7 @@ export default class Permissionnfo {
     var dataGridOptions = {
         width: '100%',
         height: '100%',
-        pageable: true,
+        pageable: false,
         altrows: true,
         theme: 'metro',
         virtualmode: true,
