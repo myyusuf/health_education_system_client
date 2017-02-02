@@ -7,7 +7,7 @@ export default class StudentInfo {
 
   constructor(options) {
     this.id = guid();
-    this.student = options.student;
+    this.riwayatMppd = options.riwayatMppd;
     this.onDivisionChange = options.onDivisionChange;
   }
 
@@ -15,8 +15,8 @@ export default class StudentInfo {
 
     var _this = this;
 
-    var nameStr = this.student.nama + ' [ ' + this.student.stambuk_lama + ' - ' + this.student.stambuk_baru + ' ]';
-    var nameLabel = new Label({text: nameStr, bold: true});
+    var bagianBermasalah = this.riwayatMppd.bagian_bermasalah;
+    var nameLabel = new Label({text: bagianBermasalah, color: 'red', bold: true});
     var divisionComboBox = new DivisionComboBox({
       onChange: _this.onDivisionChange
     });

@@ -27,6 +27,7 @@ export default class RiwayatMPPDList {
           { name: 'stambuk_baru', type: 'string' },
           { name: 'nama', type: 'string' },
           { name: 'status', type: 'string' },
+          { name: 'bagian_bermasalah', type: 'string' },
         ],
         id: "id",
         url: url
@@ -48,10 +49,11 @@ export default class RiwayatMPPDList {
                     return params.data;
                 },
         columns: [
-          { text: 'Stambuk Lama', datafield: 'stambuk_lama', width: '25%' },
-          { text: 'Stambuk Baru', datafield: 'stambuk_baru', width: '25%' },
-          { text: 'Nama', datafield: 'nama', width: '25%'},
-          { text: 'Status', datafield: 'status', width: '25%'},
+          { text: 'Stambuk Lama', datafield: 'stambuk_lama', width: '15%' },
+          { text: 'Stambuk Baru', datafield: 'stambuk_baru', width: '15%' },
+          { text: 'Nama', datafield: 'nama', width: '20%'},
+          { text: 'Status', datafield: 'status', width: '10%'},
+          { text: 'Bagian Bermasalah', datafield: 'bagian_bermasalah', width: '40%'},
         ],
         groups: []
     }

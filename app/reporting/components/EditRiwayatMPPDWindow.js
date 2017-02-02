@@ -17,10 +17,13 @@ export default class EditRiwayatMPPDWindow {
 
     var studentForm = new StudentForm({riwayatMppd: riwayatMppd});
 
+    var title = '<b>Riwayat MPPD : ' + riwayatMppd.nama +
+    ' [ ' + riwayatMppd.stambuk_lama + ' - ' + riwayatMppd.stambuk_baru + ' ]</b>';
+
     this.window = new AddWindow({
       width: 550,
       height: 700,
-      title: 'Riwayat MPPD',
+      title: title,
       content: studentForm,
       onSave: function(){
         studentForm.validate();

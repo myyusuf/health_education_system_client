@@ -8,6 +8,7 @@ export default class Label {
     this.id = guid();
     this.text = options.text;
     this.bold = options.bold;
+    this.color = options.color;
   }
 
   render(container) {
@@ -18,6 +19,10 @@ export default class Label {
     labelContainer.appendTo(container);
     if(this.bold){
       labelContainer.css('font-weight', 'bold');
+    }
+
+    if(this.color){
+      labelContainer.css('color', this.color);
     }
 
   }
