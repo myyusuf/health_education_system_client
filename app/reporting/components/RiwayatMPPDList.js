@@ -22,6 +22,7 @@ export default class RiwayatMPPDList {
         datatype: "json",
         datafields: [
           { name: 'id', type: 'int' },
+          { name: 'siswa_id', type: 'int' },
           { name: 'stambuk_lama', type: 'string' },
           { name: 'stambuk_baru', type: 'string' },
           { name: 'nama', type: 'string' },

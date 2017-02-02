@@ -6,6 +6,10 @@ export default class DivisionComboBox {
   constructor(options) {
     this.id = guid();
 
+    if(options == undefined){
+      options = {};
+    }
+
     var comboBoxOptions = {
       displayMember: "nama",
       valueMember: "id",

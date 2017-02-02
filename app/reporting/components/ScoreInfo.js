@@ -10,6 +10,7 @@ export default class ScoreInfo {
   constructor(options) {
     this.id = guid();
 
+    this.siswaId = options.siswaId;
     var score = {};
 
     var preTestNumberInput = new NumberInput({value: score.pre_test, width: '70%', height: 25});
@@ -21,6 +22,8 @@ export default class ScoreInfo {
     var seminarNumberInput = new NumberInput({value: score.seminar, width: '70%', height: 25});
     var portofolioNumberInput = new NumberInput({value: score.portofolio, width: '70%', height: 25});
     var judulLaporanKasusTextBox = new TextBox({value: score.judul_laporan_kasus, height: 25, width: '70%'});
+
+    this.preTestNumberInput = preTestNumberInput;
 
     var formItems = [
       {
@@ -92,6 +95,35 @@ export default class ScoreInfo {
     }
 
     this.form = new Form(formOptions);
+  }
+
+  changeDivision(bagianId){
+
+    var _this = this;
+
+    this.bagianId = bagianId;
+
+    var url = 'scoreinfo/' + this.siswaId;
+
+    $.ajax({
+      method: "GET",
+      url: url ,
+      data: {
+        bagian: bagianId
+      }
+    }).done(function(data) {
+
+      if(data.length > 0){
+        _this.preTestNumberInput.setValue(data[0].pre_test);
+
+      }else{
+        _this.preTestNumberInput.setValue(0);
+      }
+
+
+    }).fail(function() {
+        alert('Error while doing operation');
+    });
   }
 
   render(container) {

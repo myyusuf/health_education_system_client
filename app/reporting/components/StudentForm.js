@@ -19,9 +19,10 @@ export default class StudentForm {
       onDivisionChange: function(value){
         _this.medicalInfo.changeDivision(value);
         _this.problemInfo.changeDivision(value);
+        _this.scoreInfo.changeDivision(value);
       }
     });
-    this.scoreInfo = new ScoreInfo({riwayatMppdId: this.riwayatMppd.id});
+    this.scoreInfo = new ScoreInfo({siswaId: this.riwayatMppd.siswa_id});
     this.problemInfo = new ProblemInfo({riwayatMppdId: this.riwayatMppd.id});
     this.medicalInfo = new MedicalInfo({riwayatMppdId: this.riwayatMppd.id});
     this.permissionInfo = new PermissionInfo({riwayatMppdId: this.riwayatMppd.id});
