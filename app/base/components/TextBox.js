@@ -63,4 +63,8 @@ export default class TextBox {
   getValue(){
     return this.component.val();
   }
+
+  setValue(value){
+    return this.component.val(value);
+  }
 }

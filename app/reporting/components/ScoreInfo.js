@@ -24,6 +24,14 @@ export default class ScoreInfo {
     var judulLaporanKasusTextBox = new TextBox({value: score.judul_laporan_kasus, height: 25, width: '70%'});
 
     this.preTestNumberInput = preTestNumberInput;
+    this.tugasIlmiahNumberInput = tugasIlmiahNumberInput;
+    this.diskusiMingguanNumberInput = diskusiMingguanNumberInput;
+    this.ujianNumberInput = ujianNumberInput;
+    this.postTestNumberInput = postTestNumberInput;
+    this.nilaiAkhirNumberInput = nilaiAkhirNumberInput;
+    this.seminarNumberInput = seminarNumberInput;
+    this.portofolioNumberInput = portofolioNumberInput;
+    this.judulLaporanKasusTextBox = judulLaporanKasusTextBox;
 
     var formItems = [
       {
@@ -115,9 +123,24 @@ export default class ScoreInfo {
 
       if(data.length > 0){
         _this.preTestNumberInput.setValue(data[0].pre_test);
-
+        _this.tugasIlmiahNumberInput.setValue(data[0].tugas_ilmiah);
+        _this.diskusiMingguanNumberInput.setValue(data[0].diskusi_mingguan);
+        _this.ujianNumberInput.setValue(data[0].ujian);
+        _this.postTestNumberInput.setValue(data[0].post_test);
+        _this.nilaiAkhirNumberInput.setValue(data[0].nilai_akhir);
+        _this.seminarNumberInput.setValue(data[0].seminar);
+        _this.portofolioNumberInput.setValue(data[0].portofolio);
+        _this.judulLaporanKasusTextBox.setValue(data[0].judul_laporan_kasus);
       }else{
         _this.preTestNumberInput.setValue(0);
+        _this.tugasIlmiahNumberInput.setValue(0);
+        _this.diskusiMingguanNumberInput.setValue(0);
+        _this.ujianNumberInput.setValue(0);
+        _this.postTestNumberInput.setValue(0);
+        _this.nilaiAkhirNumberInput.setValue(0);
+        _this.seminarNumberInput.setValue(0);
+        _this.portofolioNumberInput.setValue(0);
+        _this.judulLaporanKasusTextBox.setValue('');
       }
 
 
