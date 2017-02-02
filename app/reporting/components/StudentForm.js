@@ -15,7 +15,11 @@ export default class StudentForm {
     this.id = guid();
     this.riwayatMppd = options.riwayatMppd;
     this.studentInfo = new StudentInfo({
-      student: {nama: 'marliyanti'},
+      student: {
+        nama: options.riwayatMppd.nama,
+        stambuk_lama: options.riwayatMppd.stambuk_lama,
+        stambuk_baru: options.riwayatMppd.stambuk_baru
+      },
       onDivisionChange: function(value){
         _this.medicalInfo.changeDivision(value);
         _this.problemInfo.changeDivision(value);

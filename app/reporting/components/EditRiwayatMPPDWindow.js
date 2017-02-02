@@ -13,6 +13,7 @@ export default class EditRiwayatMPPDWindow {
 
     var riwayatMppd = options.data;
     this.onSaveSuccess = options.onSaveSuccess;
+    this.onCancel = options.onCancel;
 
     var studentForm = new StudentForm({riwayatMppd: riwayatMppd});
 
@@ -26,7 +27,11 @@ export default class EditRiwayatMPPDWindow {
       },
       onCancel: function(){
         _this.window.close();
-      }
+        if(_this.onCancel){
+          _this.onCancel();
+        }
+      },
+      cancelButtonTitle: 'Close'
     });
 
   }

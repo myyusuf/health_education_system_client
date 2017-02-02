@@ -34,8 +34,13 @@ export default class AddWindow {
         }
       });
 
+      var cancelButtonTitle = 'Cancel';
+      if(options.cancelButtonTitle){
+        cancelButtonTitle = options.cancelButtonTitle;
+      }
+
       this.cancelButton = new Button({
-        title: 'Cancel',
+        title: cancelButtonTitle,
         onClick: function(){
           if(options.onCancel){
             options.onCancel();

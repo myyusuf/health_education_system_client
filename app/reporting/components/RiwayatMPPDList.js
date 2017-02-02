@@ -64,6 +64,8 @@ export default class RiwayatMPPDList {
           data: data,
           onSaveSuccess: function(){
             _this.dataGrid.refresh();
+          }, onCancel: function(){
+            _this.dataGrid.refresh();
           }
         });
         editRiwayatMPPDWindow.render($('#dialogWindowContainer'));
