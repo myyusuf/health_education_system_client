@@ -18,6 +18,7 @@ export default class StudentForm {
       riwayatMppd: this.riwayatMppd,
       onDivisionChange: function(value){
         _this.medicalInfo.changeDivision(value);
+        _this.permissionInfo.changeDivision(value);
         _this.problemInfo.changeDivision(value);
         _this.scoreInfo.changeDivision(value);
       }

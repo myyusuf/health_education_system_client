@@ -5,23 +5,31 @@ import NumberInput from '../../base/components/NumberInput';
 import CheckBox from '../../base/components/CheckBox';
 import Label from '../../base/components/Label';
 import DataGrid from '../../base/components/DataGrid';
+import AddPermissionInfoWindow from './AddPermissionInfoWindow';
+import EditPermissionInfoWindow from './EditPermissionInfoWindow';
 
-export default class Permissionlnfo {
+export default class Permissionnfo {
 
   constructor(options) {
     this.id = guid();
 
+    this.riwayatMppdId = options.riwayatMppdId;
+    this.bagianId = 0;
+
     var _this = this;
 
-    var url = "/students";
+    var url = "/permissioninfo/" + this.riwayatMppdId;
 
     var source = {
         datatype: "json",
         datafields: [
           { name: 'id', type: 'int' },
-          { name: 'medical_date', type: 'date', format: "yyyy-MM-ddTHH:mm:ss-HH:mm" },
-          { name: 'description', type: 'string' },
-          { name: 'division', type: 'string' }
+          { name: 'tanggal', type: 'date', format: "yyyy-MM-ddTHH:mm:ss-HH:mm" },
+          { name: 'keterangan', type: 'string' },
+          { name: 'jumlah_hari', type: 'string' },
+          { name: 'bagian_id', type: 'int' },
+          { name: 'bagian_code', type: 'string' },
+          { name: 'bagian_nama', type: 'string' },
         ],
         id: "id",
         url: url
@@ -38,9 +46,10 @@ export default class Permissionlnfo {
                     return params.data;
                 },
         columns: [
-          { text: 'Tanggal', datafield: 'medical_date', width: '33.33%' },
-          { text: 'Keterangan', datafield: 'description', width: '33.33%' },
-          { text: 'Bagian', datafield: 'division', width: '33.33%' },
+          { text: 'Tanggal', datafield: 'tanggal', cellsformat: 'dd-MM-yyyy', width: '20%' },
+          { text: 'Keterangan', datafield: 'keterangan', width: '40%' },
+          { text: 'Jumlah Hari', datafield: 'jumlah_hari', cellsalign: 'right', cellsformat: 'd', width: '15%' },
+          { text: 'Bagian', datafield: 'bagian_nama', width: '25%' },
         ],
         groups: []
     }
@@ -48,6 +57,7 @@ export default class Permissionlnfo {
     var onSearch = function(data) {
           // data['searchTxt'] = searchTextBox.getValue();
           // data['level'] = levelComboBox.getValue();
+          data['bagian'] = _this.bagianId;
           return data;
     }
 
@@ -55,14 +65,14 @@ export default class Permissionlnfo {
       source: source,
       onSearch: onSearch,
       onRowDoubleClick: function(data){
-        var editStudentWindow = new EditStudentWindow({
-          data: data,
+        var editPermissionInfoWindow = new EditPermissionInfoWindow({
+          permissionInfo: data,
           onSaveSuccess: function(){
             _this.dataGrid.refresh();
           }
         });
-        editStudentWindow.render($('#dialogWindowContainer'));
-        editStudentWindow.open();
+        editPermissionInfoWindow.render($('#dialogWindowContainer'));
+        editPermissionInfoWindow.open();
       },
       dataGridOptions: dataGridOptions
     });
@@ -70,18 +80,22 @@ export default class Permissionlnfo {
 
   render(container) {
 
-    var addMedicalInfo = new Button({
+    var _this = this;
+
+    var addPermissionInfo = new Button({
       title:'Tambah Surat Izin',
       template: 'primary',
       height: 26,
       onClick: function(){
-        // var addStudentWindow = new AddStudentWindow({
-        //   onSaveSuccess: function(){
-        //     _this.dataGrid.refresh();
-        //   }
-        // });
-        // addStudentWindow.render($('#dialogWindowContainer'));
-        // addStudentWindow.open();
+        var addPermissionInfoWindow = new AddPermissionInfoWindow({
+          riwayatMppdId: _this.riwayatMppdId,
+          bagianId: _this.bagianId,
+          onSaveSuccess: function(){
+            _this.dataGrid.refresh();
+          }
+        });
+        addPermissionInfoWindow.render($('#dialogWindowContainer'));
+        addPermissionInfoWindow.open();
       }
     });
 
@@ -98,7 +112,7 @@ export default class Permissionlnfo {
     innerTable.appendTo(td);
     innerTr.appendTo(innerTable);
     innerTd.appendTo(innerTr);
-    addMedicalInfo.render(innerTd);
+    addPermissionInfo.render(innerTd);
 
     tr = $('<tr></tr>');
     td = $('<td style="padding: 0;"></td>');
@@ -107,5 +121,10 @@ export default class Permissionlnfo {
 
     this.dataGrid.render(td);
 
+  }
+
+  changeDivision(bagianId){
+    this.bagianId = bagianId;
+    this.dataGrid.refresh();
   }
 }
