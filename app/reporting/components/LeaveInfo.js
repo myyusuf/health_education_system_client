@@ -5,23 +5,28 @@ import NumberInput from '../../base/components/NumberInput';
 import CheckBox from '../../base/components/CheckBox';
 import Label from '../../base/components/Label';
 import DataGrid from '../../base/components/DataGrid';
+import AddLeaveInfoWindow from './AddLeaveInfoWindow';
+import EditLeaveInfoWindow from './EditLeaveInfoWindow';
 
 export default class Leavelnfo {
 
   constructor(options) {
     this.id = guid();
 
+    this.riwayatMppdId = options.riwayatMppdId;
+
     var _this = this;
 
-    var url = "/students";
+    var url = "/leaveinfo/" + this.riwayatMppdId;
 
     var source = {
         datatype: "json",
         datafields: [
           { name: 'id', type: 'int' },
-          { name: 'medical_date', type: 'date', format: "yyyy-MM-ddTHH:mm:ss-HH:mm" },
-          { name: 'description', type: 'string' },
-          { name: 'level', type: 'string' }
+          { name: 'tanggal', type: 'date', format: "yyyy-MM-ddTHH:mm:ss-HH:mm" },
+          { name: 'keterangan', type: 'string' },
+          { name: 'jumlah_hari', type: 'string' },
+          { name: 'tingkat', type: 'int' }
         ],
         id: "id",
         url: url
@@ -30,7 +35,7 @@ export default class Leavelnfo {
     var dataGridOptions = {
         width: '100%',
         height: '100%',
-        pageable: true,
+        pageable: false,
         altrows: true,
         theme: 'metro',
         virtualmode: true,
@@ -38,16 +43,16 @@ export default class Leavelnfo {
                     return params.data;
                 },
         columns: [
-          { text: 'Tanggal', datafield: 'medical_date', width: '33.33%' },
-          { text: 'Keterangan', datafield: 'description', width: '33.33%' },
-          { text: 'Tingkat', datafield: 'level', width: '33.33%' },
+          { text: 'Tanggal', datafield: 'tanggal', cellsformat: 'dd-MM-yyyy', width: '20%' },
+          { text: 'Keterangan', datafield: 'keterangan', width: '40%' },
+          { text: 'Jumlah Hari', datafield: 'jumlah_hari', cellsalign: 'right', cellsformat: 'd', width: '15%' },
+          { text: 'Tingkat', datafield: 'tingkat', width: '25%' },
         ],
         groups: []
     }
 
     var onSearch = function(data) {
-          // data['searchTxt'] = searchTextBox.getValue();
-          // data['level'] = levelComboBox.getValue();
+
           return data;
     }
 
@@ -55,14 +60,14 @@ export default class Leavelnfo {
       source: source,
       onSearch: onSearch,
       onRowDoubleClick: function(data){
-        var editStudentWindow = new EditStudentWindow({
-          data: data,
+        var editLeaveInfoWindow = new EditLeaveInfoWindow({
+          leaveInfo: data,
           onSaveSuccess: function(){
             _this.dataGrid.refresh();
           }
         });
-        editStudentWindow.render($('#dialogWindowContainer'));
-        editStudentWindow.open();
+        editLeaveInfoWindow.render($('#dialogWindowContainer'));
+        editLeaveInfoWindow.open();
       },
       dataGridOptions: dataGridOptions
     });
@@ -70,18 +75,21 @@ export default class Leavelnfo {
 
   render(container) {
 
-    var addMedicalInfo = new Button({
+    var _this = this;
+
+    var addLeaveInfo = new Button({
       title:'Tambah Surat Cuti',
       template: 'primary',
       height: 26,
       onClick: function(){
-        // var addStudentWindow = new AddStudentWindow({
-        //   onSaveSuccess: function(){
-        //     _this.dataGrid.refresh();
-        //   }
-        // });
-        // addStudentWindow.render($('#dialogWindowContainer'));
-        // addStudentWindow.open();
+        var addLeaveInfoWindow = new AddLeaveInfoWindow({
+          riwayatMppdId: _this.riwayatMppdId,
+          onSaveSuccess: function(){
+            _this.dataGrid.refresh();
+          }
+        });
+        addLeaveInfoWindow.render($('#dialogWindowContainer'));
+        addLeaveInfoWindow.open();
       }
     });
 
@@ -98,7 +106,7 @@ export default class Leavelnfo {
     innerTable.appendTo(td);
     innerTr.appendTo(innerTable);
     innerTd.appendTo(innerTr);
-    addMedicalInfo.render(innerTd);
+    addLeaveInfo.render(innerTd);
 
     tr = $('<tr></tr>');
     td = $('<td style="padding: 0;"></td>');
@@ -108,4 +116,5 @@ export default class Leavelnfo {
     this.dataGrid.render(td);
 
   }
+
 }
