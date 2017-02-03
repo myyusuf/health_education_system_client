@@ -14,7 +14,7 @@ export default class AddLeaveInfoWindow {
     this.onSaveSuccess = options.onSaveSuccess;
 
     var addLeaveInfoForm = new AddLeaveInfoForm({
-      riwayatMppdId: options.riwayatMppdId
+      riwayatMppdId: options.riwayatMppdId,
       onSaveSuccess: function(){
         _this.window.close();
         if(_this.onSaveSuccess){
