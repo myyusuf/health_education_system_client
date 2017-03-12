@@ -95,6 +95,48 @@ export default class WeeklyScheduleList {
       }
     });
 
+    var downloadButton = new Button({
+      title: 'Download',
+      template: 'success',
+      theme: 'metro',
+      width: 80,
+      height: 26,
+      onClick: function(){
+
+        var url = '/weeklyschedules/download?';
+        var startDateStr = (new Date(dateRange.getValue().from)) + "";
+
+        var endDateStr = (new Date(dateRange.getValue().to)) + "";
+        var startDate = startDateStr.replace(/ /g, "+");
+        startDate = startDate.replace("00:00:00+GMT+0700", "00%3A00%3A00+GMT%2B0700");
+        var endDate = endDateStr.replace(/ /g, "+");
+        endDate = endDate.replace("23:59:59+GMT+0700", "23%3A59%3A59+GMT%2B0700");
+
+        url += '&searchTxt=' + searchTextBox.getValue() +
+        '&searchDivision=' + divisionComboBox.getValue() +
+        '&searchDate%5Bfrom%5D=' + startDate + '&searchDate%5Bto%5D=' + endDate +
+        '&_=' + Math.random();
+
+        window.location = url;
+        // console.log('url : ' + url);
+
+        // &searchTxt=&searchDivision=&searchDate%5Bfrom%5D=Mon+Aug+01+2016+00%3A00%3A00+GMT%2B0700+(WIB)&searchDate%5Bto%5D=Wed+Aug+31+2016+23%3A59%3A59+GMT%2B0700+(WIB)&_=1489305072724
+        // &searchTxt=&searchDivision=&searchDate%5Bfrom%5D=Mon+Aug+01+2016+00%3A00%3A00+GMT%2B0700+(WIB)&searchDate%to%5D=Wed+Aug+31+2016+23%3A59%3A59+GMT%2B0700+(WIB)&_=0.4794054648524053
+
+        // $.ajax({
+        //   method: "GET",
+        //   url: url,
+        //   data: {}
+        // }).done(function(data) {
+        //
+        // }).fail(function(jqXHR, textStatus, errorThrown) {
+        //   var errorMessage = 'Proses gagal. Status : ' + jqXHR.status + ' [' + jqXHR.statusText + '] : ' + jqXHR.responseText;
+        //   $("#errorNotification").html('<div>' + errorMessage + '</div>');
+        //   $("#errorNotification").jqxNotification("open");
+        // });
+      }
+    });
+
     var table = $('<table style="height: 100%; width: 100%; margin: -3px; "></table>');
     var tr = $('<tr></tr>');
     var td = $('<td style="padding: 0; height: 40px;"></td>');
@@ -123,6 +165,10 @@ export default class WeeklyScheduleList {
     _tempContainer.appendTo(innerTd);
     innerTd.appendTo(innerTr);
     searchButton.render(_tempContainer);
+
+    var innerTd = $('<td style="padding-top: 6px; padding-left: 10px; width: 120px; height: 100%;"></td>');
+    innerTd.appendTo(innerTr);
+    downloadButton.render(innerTd);
 
     tr = $('<tr></tr>');
     td = $('<td style="padding: 0;"></td>');
