@@ -108,9 +108,9 @@ export default class WeeklyScheduleList {
 
         var endDateStr = (new Date(dateRange.getValue().to)) + "";
         var startDate = startDateStr.replace(/ /g, "+");
-        startDate = startDate.replace("00:00:00+GMT+0700", "00%3A00%3A00+GMT%2B0700");
+        startDate = startDate.replace("00:00:00+GMT+", "00%3A00%3A00+GMT%2B");
         var endDate = endDateStr.replace(/ /g, "+");
-        endDate = endDate.replace("23:59:59+GMT+0700", "23%3A59%3A59+GMT%2B0700");
+        endDate = endDate.replace("23:59:59+GMT+", "23%3A59%3A59+GMT%2B");
 
         url += '&searchTxt=' + searchTextBox.getValue() +
         '&searchDivision=' + divisionComboBox.getValue() +
