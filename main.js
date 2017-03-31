@@ -14,6 +14,7 @@ import HospitalScheduleView from "./app/hospital/components/HospitalScheduleView
 import ClinicScheduleView from "./app/hospital/components/ClinicScheduleView";
 import CostUnitReport from "./app/reporting/components/CostUnitReport";
 import RiwayatMPPDList from "./app/reporting/components/RiwayatMPPDList";
+import CompreExamList from "./app/reporting/score_report/CompreExamList";
 
 var splitter = new Splitter();
 splitter.render($('#content-inside'));
@@ -73,6 +74,24 @@ var data = [
       {
         id: 'cost_unit',
         label: "Cost Unit"
+      },
+      {
+        id: 'nilai',
+        label: "Nilai",
+        expanded: true,
+        items: [
+          {
+            id: 'nilai_kepanitraan_klinik',
+            label: "Nilai Kepanitraan Klinik"
+          }, {
+            id: 'ujian_komprehensif',
+            label: "Ujian Komprehensif"
+          },
+          {
+            id: 'ujian_ukmppd',
+            label: "Ujian UKMPPD"
+          }
+        ]
       }
     ]
   }
@@ -101,6 +120,8 @@ var tree = new Tree({
          tabs.add(item.id, item.label, hospitalList);
      }else if(item.id == 'riwayat_mppd'){
          tabs.add(item.id, item.label, riwayatMPPDList);
+     }else if(item.id == 'ujian_komprehensif'){
+         tabs.add(item.id, item.label, compreExamList);
      }
    }
 
@@ -118,6 +139,7 @@ var costUnitReport = new CostUnitReport();
 var hospitalScheduleView = new HospitalScheduleView();
 var clinicScheduleView = new ClinicScheduleView();
 var riwayatMPPDList = new RiwayatMPPDList();
+var compreExamList = new CompreExamList();
 
 var navigationBar = new NavigationBar([{
   title: 'Application',
